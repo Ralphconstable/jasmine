@@ -1,0 +1,173 @@
+.quad {
+  display: grid;
+  grid-template-columns:  20% 20% 20% 20% 20%; /* Two columns per row */
+  font-size: 16px;
+  background-color: white;
+  justify-items: left; 
+  align-items: left; 
+  gap: 20px; /* No space between cells */
+}
+
+
+/* Style for the cells */
+.grid-item {
+  margin:5px;
+  padding: 2px;
+  text-align:center;
+  color:black;
+  background-color:white;
+
+}
+
+/* Style for the left-justified cell */
+.left-justified {
+  justify-self: left; /* Left-justify */
+}
+
+/* Style for the centered cell */
+.centered {
+  justify-items: center; 
+  align-items: center; 
+}
+
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/*___________________________________________*/
+
+.edittext{
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border:none;
+  outline:none;
+  resize:none;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 25px;
+  background:rgba(0,0,0,0);
+  height:35px;
+}
+
+.edittext2{
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border:none;
+  outline:none;
+  resize:none;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 15px;
+  background:rgba(0,0,0,0);
+  float:right;
+  width: 20%;
+}
+
+.gallery{
+  overflow-y:scroll;
+  width:100%;
+  height:400px;
+  
+}
+
+/*___________________________________________*/
+ul, #myUL {
+  list-style-type: none;
+}
+
+/* Remove margins and padding from the parent ul */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}
+
+.highlighted {
+  outline: 2px solid red; /* Style for outlining */
+}
+
+
+/*___________________________________________*/
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 3px;
+  width: 100%;
+  border: none;
+  /*text-align: left;*/
+  outline: none;
+  font-size: 16px;
+  transition: 0.4s;
+  width:100%;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 3px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+/*------------------------------------*/
+.propbox{
+  max-height:350px;
+  height:400px;
+  padding:0;
+  display:none;
+  position:absolute;
+  left:10px;
+  top:50px;
+  width:300px;
+  z-index:2000;
+
+}
+
+
+

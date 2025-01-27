@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="my.css">
+
+</head>
+	<script src="gallery.js"></script>
+  <script src="main.js"></script>
+  <script src="config.js"></script>
+  <script src="shaders.js"></script>
+  <script src="transform.js"></script>
+  <script src="primatives.js"></script>
+  <script src="modal.js"></script>
+
+
+
+
+
+
+<script>
+	function init(){
+		document.getElementById("homeplate").style.height=window.innerHeight+"px"
+	}
+</script>
+<body  id="home" onload="main()" style="touch-action: none;overflow: hidden">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button w3-hide-small"><b>Jasmine</b> </a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#projects" class="w3-bar-item w3-button ">Projects</a>
+      <a href="#models" class="w3-bar-item w3-button ">Models</a>
+      <a href="#animation" class="w3-bar-item w3-button ">Animation</a>
+    </div>
+  </div>
+</div>
+
+<!-- main can as-->
+
+<div id="homeplate" style="border:1px solid black;margin-top:0px;width:100vw;height:100vh">
+		<!-- canvas id="glcanvas"></canvas -->
+</div>
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+<!-- scroll list -->
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Main Project</div>
+        <img src="/w3images/house5.jpg" alt="Main Project" style="width:100%">
+      </div>
+    </div>
+
+
+  <!-- models Section -->
+  <div class="w3-container w3-padding-32" id="models">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Models</h3>
+    <p>Select various models by type : Primative, Procedural, From Files,  From User</p>
+  </div>
+
+  <div class="w3-grayscale quad" >
+    <div class="w3-margin-bottom grid-item">
+      <img src="resources/primatives.jpg" alt="primatives" style="width:100%;">
+      <h4>Primatives</h4>
+    </div>
+    <div class="w3-margin-bottom grid-item">
+      <img src="resources/primatives.jpg" alt="primatives" style="width:100%">
+      <h4>Primatives</h4>
+    </div>
+
+  </div>
+
+  <!-- Animation Section -->
+  <div class="w3-container w3-padding-32" id="animation">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Animations</h3>
+    <p>Simple rotation, translation scale bones and IK rigging</p>
+  </div>
+
+
+  
+    
+<!-- Image of location/map -->
+<div class="w3-container">
+  <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+</div>
+
+<!-- End page content -->
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+</body>
+</html>

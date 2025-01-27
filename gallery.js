@@ -74,7 +74,7 @@ class Gallery {
     constructor(name){
         this.div=document.createElement("div")
         this.div.className="w3-white w3-wide w3-padding w3-card "
-        this.div.setAttribute("style","position:absolute;width:25vw;height:88vh;display:block;top:10%;z-index:4000;")
+        this.div.setAttribute("style","position:absolute;width:55vw;height:88vh;display:block;top:10%;z-index:4000;")
         this.name=name
         this.holder=document.createElement("div")
         this.holder.className="quad"

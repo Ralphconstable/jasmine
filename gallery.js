@@ -74,7 +74,9 @@ class Gallery {
     constructor(name){
         this.div=document.createElement("div")
         this.div.className="w3-white w3-wide w3-padding w3-card "
-        this.div.setAttribute("style","position:absolute;width:35vw;height:88vh;display:block;top:12%;z-index:4000;")
+        var top=document.getElementById("topbar")
+        this.div.setAttribute("style","left:0px;top:85px;background:pink;display:block;position:absolute;width:40vw;height:90vh")
+       this.div.style.top=(top.clientHeight+5+"px")
         this.name=name
         this.holder=document.createElement("div")
         this.holder.className="quad"
@@ -110,7 +112,7 @@ class Gallery {
        clearTimeout(this.timeoutId);
     };
 
-    timer(){alert()
+    timer(){
         clearTimeout(this.timeoutId);
     }
 
@@ -126,7 +128,7 @@ class Gallery {
         icon.appendChild(h4)
         h4.innerHTML=title
         icon.style.border="1px solid black"
-        icon.style.maxHeight="13vh"
+        icon.style.maxHeight="15vh"
 
         return icon
     }

@@ -123,7 +123,7 @@ class Gallery {
         img.src="resources/primatives.jpg"
         img.setAttribute("alt","primatives")
         img.style.width="100%"
-        var h4=document.createElement("h4")
+        var h4=document.createElement("div")
         icon.appendChild(img)
         icon.appendChild(h4)
         h4.innerHTML=title

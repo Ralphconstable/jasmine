@@ -128,7 +128,7 @@ class Gallery {
         icon.appendChild(h4)
         h4.innerHTML=title
         icon.style.border="1px solid black"
-        icon.style.maxHeight="20%"
+        icon.style.maxHeight="25%"
 
         return icon
     }

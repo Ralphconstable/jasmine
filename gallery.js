@@ -123,12 +123,12 @@ class Gallery {
         img.src="resources/primatives.jpg"
         img.setAttribute("alt","primatives")
         img.style.width="100%"
-        var h4=document.createElement("div")
+        var h4=document.createElement("h4")
         icon.appendChild(img)
         icon.appendChild(h4)
         h4.innerHTML=title
         icon.style.border="1px solid black"
-        icon.style.maxHeight="20%"
+       icon.style.maxHeight="20%"
 
         return icon
     }

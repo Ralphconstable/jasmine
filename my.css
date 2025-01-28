@@ -1,6 +1,7 @@
 .quad {
   display: grid;
   grid-template-columns:  20% 20% 20% 20% 20%; /* Two columns per row */
+  grid-template-rows:auto;
   font-size: 12px;
   background-color: white;
   justify-items: left; 

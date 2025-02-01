@@ -92,7 +92,7 @@ class Gallery {
         var icn=null
         for(var i=0;i<list.length;i++){
             var im=list[i].icon
-            if(im==null)im="globeholder.jpg"
+            if(im==null){im="globeholder.jpg";}
             icn= this.addIcon('resources/'+im,list[i].model)
             this.holder.appendChild(icn)
             icn.addEventListener("touchstart", this.mouseDown.bind(this),false)
@@ -101,7 +101,24 @@ class Gallery {
         }
         return this
     }
-    
+    addIcon(imge,title){
+        var icon =document.createElement("div")
+        icon.className="w3-margin-bottom grid-item"
+        var img=document.createElement("img")
+        img.src=imge
+        img.setAttribute("alt","primatives")
+        img.style.width="100%"
+        var h4=document.createElement("div")
+        icon.appendChild(img)
+        icon.appendChild(h4)
+        h4.innerHTML=title
+        icon.style.border="1px solid black"
+       icon.style.maxHeight="20%"
+       return icon
+    }
+
+
+
     mouseDown(){
         this.startTime = Date.now();
         this.timeoutId = setTimeout(this.timer,500)
@@ -114,23 +131,6 @@ class Gallery {
 
     timer(){
         clearTimeout(this.timeoutId);
-    }
-
-    addIcon(image,title){
-        var icon =document.createElement("div")
-        icon.className="w3-margin-bottom grid-item"
-        var img=document.createElement("img")
-        img.src="resources/primatives.jpg"
-        img.setAttribute("alt","primatives")
-        img.style.width="100%"
-        var h4=document.createElement("div")
-        icon.appendChild(img)
-        icon.appendChild(h4)
-        h4.innerHTML=title
-        icon.style.border="1px solid black"
-       icon.style.maxHeight="20%"
-
-        return icon
     }
 
     show(){

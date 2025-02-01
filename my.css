@@ -6,7 +6,7 @@
   background-color: white;
   justify-items: left; 
   align-items: left; 
-  gap: 1.5vw; /* No space between cells */
+  gap: 0.25vw; /* No space between cells */
 }
 
 

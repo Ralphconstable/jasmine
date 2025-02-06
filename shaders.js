@@ -1,3 +1,5 @@
+
+
 class Shader{
 	constructor(gl,vertShaderSrc,fragShaderSrc){
 		this._GLOBALARRAY=[]
@@ -345,5 +347,75 @@ class ShaderUtil{
 
 }
 
-    
+////////////////////////////////////
+/*class UniformTable{
+	constructor(){
+		this.header=['Uniform','Type','Value','Editor']
+		this.editorSelect=	  this.fillDropdowns([
+			'edit','position','boolean','checkbox','color','number',
+			'radio','range','url','select','sampler2D'
+		])
 
+
+	}
+
+    getUniformsFromShader(obj){
+        if(obj.shader==null)return
+        this.shaderUniforms=[]
+        var vert =obj.shader.extractedVert
+        var frag =obj.shader.extractedFrag
+        for(var i=0;i<vert.uniforms.length;i++){
+          this.shaderUniforms.push({"structure":"none", "type":vert.uniforms[i].type,"name":vert.uniforms[i].name})
+        }
+        for(var i=0;i<frag.uniforms.length;i++){
+          this.shaderUniforms.push({"structure":"none","type":frag.uniforms[i].type,"name":frag.uniforms[i].name})
+        }
+        for(var i=0;i<frag.structures.length;i++){
+          const result = frag.uniforms.find(({ type }) => type === frag.structures[i].pre);  
+          if(result !=undefined) {
+             this.shaderUniforms.push({"structure":frag.structures[i].pre,"type":frag.structures[i].type,'name':frag.structures[i].uniform})
+            }
+          }
+    
+      }
+
+	  createTable(obj){
+		var table=document.createElement("table")
+		var head =document.createElement('thead')
+		var rowHead=document.createElement("tr")
+		rowHead.className="w3-blue"
+		for(var i=0;i<this.header.length;i++){
+			var t=document.createElement("th")
+			t.innerHTML=this.header[i]
+			rowHead.appendChild(t)
+		}
+		head.appendChild(rowHead)
+		var su =getUniformsFromShader(obj)
+		for(var i=0;i<su.length;i++){
+			var tr=document.createElement("tr")
+
+			for(var j=0;j<this.header.length;j++){
+				var td=document.createElement("td")
+
+			}
+
+		}
+
+	  }
+
+	  fillDropdowns(options){
+		var select = document.createElement("select")
+
+		for(var i = 0; i < options.length; i++) {
+    		var opt = options[i];
+    		var el = document.createElement("option");
+    		el.textContent = opt;
+    		el.value = opt;
+    		select.appendChild(el);
+		}
+		return select
+	  }
+
+
+}
+*/

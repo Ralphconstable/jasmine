@@ -1,7 +1,7 @@
 
 class _3DObject {
 	constructor(name){
-		this.setName(name)		
+		this.setName(name)	
 		this.renderable=false;
 		this.moveable=false
 		this.display=[
@@ -15,7 +15,6 @@ class _3DObject {
 		this.uniforms=[]
 		this.attributes=[]
 		this.children=[]
-
 	}
 
 	addUniform(u){
@@ -52,7 +51,6 @@ class _3DObject {
 		}
 		this.name=n+x
 		//if(x==0)this.name=n
-
 		return this;
 	}
 
@@ -95,7 +93,6 @@ class Modal2 extends _3DObject{
 			this.sections.push({"name":"Default","objectName":"","material":"","index":[],"uniforms":[]})
 		if(add==undefined)
 			add=true
-
 		this.shaderUniforms=[]
 		this.fromFile=''
 		this.renderable=true
@@ -104,7 +101,7 @@ class Modal2 extends _3DObject{
 		this.extent="local"
 		this.uid=[]
 		this.moveable =true;
-		this.uid=Utility.idToColor(_OBJECTARRAY.length+1)
+		//this.uid=Utility.idToColor(_OBJECTARRAY.length+1)
 		if(add)	this.addObjectToList()
 
 		this.shader=null
@@ -165,10 +162,10 @@ class Modal2 extends _3DObject{
 			this.shader.activate()
 			this.shader.setCameraMatrix(gCamera.viewMatrix)
 			this.shader.setViewPosition(gCamera.transform.position)
-       		this.shader.prepareUniforms(this,0)
+       	/*	this.shader.prepareUniforms(this,0)
 			var loc = gl.getUniformLocation(this.shader.program,'objid');
 			gl.uniform3f(loc, this.uid[0],this.uid[1],this.uid[2]);
-
+*/
         	this.shader.render(this.preRender(),0);
 
 		if(MRT){

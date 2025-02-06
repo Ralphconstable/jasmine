@@ -1,10 +1,8 @@
  class GridFloor{
 	constructor(gl,incAxis){
-
 		this.transform = new Transform();
 		this.gl = gl;
 		this.createMesh(gl,incAxis || false)
-
 		this.createShader();
 
 	}
@@ -38,6 +36,7 @@
 		this.gl.useProgram(this.mShader);
 		this.gl.uniform3fv(this.mUniformColor, new Float32Array([ 0.8,0.8,0.8,  1,0,0,  0,1,0,  0,0,1 ]));
 		this.gl.useProgram(null);
+	
 
 	}
 
@@ -97,7 +96,6 @@
 			div = 30.0,			// How to divide up the grid
 			step = size / div,	// Steps between each line, just a number we increment by for each line in the grid.
 			half = size / 2;	// From origin the starting position is half the size.
-
 		var p;	//Temp variable for position value.
 		for(var i=0; i <= div; i++){
 			//Vertical line
@@ -171,12 +169,12 @@
 		strideLen = Float32Array.BYTES_PER_ELEMENT * mesh.vertexComponentLen; //Stride Length is the Vertex Size for the buffer in Bytes
 		//Setup our Buffer
 		mesh.bufVertices = gl.createBuffer();
+
 		gl.bindVertexArray(mesh.vao);
 		gl.bindBuffer(gl.ARRAY_BUFFER, mesh.bufVertices);
 		gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
 		gl.enableVertexAttribArray(ATTR_POSITION_LOC);
 		gl.enableVertexAttribArray(attrColorLoc);
-
 		gl.vertexAttribPointer(ATTR_POSITION_LOC,3,gl.FLOAT,false,strideLen,0);
 		gl.vertexAttribPointer(attrColorLoc,1,gl.FLOAT,false,strideLen,Float32Array.BYTES_PER_ELEMENT * 3);
 
@@ -185,6 +183,7 @@
 		gl.bindBuffer(gl.ARRAY_BUFFER,null);
 		gl.mMeshCache["grid"] = mesh;
 		this.mesh = mesh;
+
 
 	}
 }

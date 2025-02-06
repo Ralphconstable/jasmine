@@ -1,3 +1,24 @@
+function models(){
+    window.scrollTo({
+        top: document.getElementById("home").offsetTop, // Scroll to the top of the element
+        behavior: 'smooth' // Optional: Add smooth scrolling animation
+      });
+    _Galleries[0].show()
+
+}
+function addObject(){
+    var target=event.target.tagName
+    if(target!="DIV")target=event.target.parentNode
+    var index=parseInt(target.id.split(":")[1])
+   var object=eval(_ModelsGallery[index].object)
+  object.setPosition(lastPosition.x,lastPosition.y,lastPosition.z)
+   lastPosition.x+=200/gl.canvas.width
+   lastPosition.y+=200/gl.canvas.width
+   lastPosition.z+=200/gl.canvas.width
+
+   _Galleries[0].hide()
+}
+
 class DND {
     constructor(){
         this.dragicon=document.createElement("div")
@@ -71,16 +92,17 @@ class DND {
 }
 
 class Gallery {
-    constructor(name){
+    constructor(name){alert()
         this.div=document.createElement("div")
-        this.div.className="w3-white w3-wide w3-padding w3-card "
+        this.div.className="w3-white w3-wide w3-padding w3-card"
         var top=document.getElementById("topbar")
         this.div.setAttribute("style","left:0px;top:85px;background:pink;display:block;position:absolute;width:40vw;height:90vh")
        this.div.style.top=(top.clientHeight+5+"px")
         this.name=name
         this.holder=document.createElement("div")
-        this.holder.className="quad"
-        this.holder.style.display="grid"
+       // this.holder.className="quad"
+        this.holder.style.float="left"
+       // this.holder.style.display="grid"
         this.holder.style.width="100%"
         this.holder.style.height="100%"
         this.div.appendChild(this.holder)
@@ -93,7 +115,7 @@ class Gallery {
         for(var i=0;i<list.length;i++){
             var im=list[i].icon
             if(im==null){im="globeholder.jpg";}
-            icn= this.addIcon('resources/'+im,list[i].model)
+            icn= this.addIcon('resources/'+im,list[i].model,i)
             this.holder.appendChild(icn)
             icn.addEventListener("touchstart", this.mouseDown.bind(this),false)
             icn.addEventListener("touchend", this.mouseUp.bind(this),false)
@@ -101,19 +123,24 @@ class Gallery {
         }
         return this
     }
-    addIcon(imge,title){
+    addIcon(imge,title,i){
         var icon =document.createElement("div")
-        icon.className="w3-margin-bottom grid-item"
+        icon.id="object : "+i
+        icon.style.margin="1vh"
+        icon.className="w3-margin-bottom "/*grid-item*/
+        icon.style.float="left"
+        icon.style.width="10vh"
         var img=document.createElement("img")
         img.src=imge
         img.setAttribute("alt","primatives")
-        img.style.width="100%"
+        img.style.width="9vh"
         var h4=document.createElement("div")
         icon.appendChild(img)
         icon.appendChild(h4)
         h4.innerHTML=title
         icon.style.border="1px solid black"
-       icon.style.maxHeight="20%"
+       icon.style.maxHeight="10vh"
+       icon.addEventListener('click',addObject,false)
        return icon
     }
 

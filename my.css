@@ -1,18 +1,18 @@
 .quad {
   display: grid;
   grid-template-rows: auto; /* Two columns per row */
-  grid-template-columns:  20% 20% 20% 20% 20%; /* Two columns per row */
-  font-size: 16px;
+  grid-template-columns:  14% 14% 14% 14% 14% 14% 14%; /* Two columns per row */
+  font-size: 1.5vh;
   background-color: white;
   justify-items: left; 
   align-items: left; 
-  gap: 0.66vw; /* No space between cells */
+  gap: 1vw; /* No space between cells */
 }
 
 
 /* Style for the cells */
 .grid-item {
-  margin:5px;
+  /*margin:5px;*/
   padding: 2px;
   text-align:center;
   color:black;

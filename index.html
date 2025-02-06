@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="my.css">
 
 </head>
+  <script src="webglCanvas.js"></script>
 	<script src="gallery.js"></script>
   <script src="main.js"></script>
   <script src="config.js"></script>
@@ -15,8 +16,11 @@
   <script src="transform.js"></script>
   <script src="primatives.js"></script>
   <script src="modal.js"></script>
-
-
+  <script src="camera.js"></script>
+  <script src="math.js"></script>
+  <script src="gridFloor.js"></script>
+  <script src="primatives.js"></script>
+  <script src="buffers.js"></script>
 
 
 
@@ -25,17 +29,22 @@
 	function init(){
 		document.getElementById("homeplate").style.height=window.innerHeight+"px"
 	}
+
+
 </script>
 <body  id="home" onload="main()" style="touch-action: none;overflow: hidden">
+
+
+     
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top" id="topbar">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button w3-hide-small"><b>Jasmine</b> </a>
+    <a href="#home" id="hom" class="w3-bar-item w3-button w3-hide-small"><b>Jasmine</b> </a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
       <a href="#projects" class="w3-bar-item w3-button ">Projects</a>
-      <a href="#models" class="w3-bar-item w3-button ">Models</a>
+      <a href="#models"  class="w3-bar-item w3-button ">Models</a>
       <a href="#animation" class="w3-bar-item w3-button ">Animation</a>
     </div>
   </div>
@@ -44,7 +53,7 @@
 <!-- main can as-->
 
 <div id="homeplate" style="border:1px solid black;margin-top:0px;width:100vw;height:100vh">
-		<!-- canvas id="glcanvas"></canvas -->
+
 </div>
 <!-- Page content -->
 <div class="w3-content w3-padding" style="max-width:1564px">
@@ -73,7 +82,7 @@
 
   <div class="w3-grayscale quad" >
     <div class="w3-margin-bottom grid-item">
-      <img src="resources/primatives.jpg" alt="primatives" style="width:100%;">
+      <img src="resources/primatives.jpg" onclick="models()" alt="primatives" style="width:100%;">
       <h4>Primatives</h4>
     </div>
     <div class="w3-margin-bottom grid-item">
@@ -106,5 +115,36 @@
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
+<!-- vertex shader -->
+
+<script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
+  in vec4 a_position;	//Making it a vec4, the w component is used as color index from uColor
+  in vec3 a_norm;
+  in vec2 a_uv;
+
+  uniform mat4 uPMatrix;
+  uniform mat4 uMVMatrix;
+  uniform mat4 uCameraMatrix;
+
+  out vec3 FragPos;
+  out vec3 Normal;
+    
+
+  void main(void){
+    gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position.xyz, 1.0); 
+  }
+</script>
+
+<script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
+  precision mediump float;
+  
+  out vec4 finalColor;
+  void main(void){	
+      
+    finalColor =vec4(1.,0.0,0.8,1.);
+  }
+  
+
+</script>
 </body>
 </html>

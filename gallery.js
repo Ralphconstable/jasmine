@@ -92,7 +92,7 @@ class DND {
 }
 
 class Gallery {
-    constructor(name){alert()
+    constructor(name){
         this.div=document.createElement("div")
         this.div.className="w3-white w3-wide w3-padding w3-card"
         var top=document.getElementById("topbar")

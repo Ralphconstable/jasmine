@@ -1,3 +1,14 @@
+//--------------------------------------------------
+// Global Constants 
+//--------------------------------------------------
+const ATTR_POSITION_NAME	= "a_position";
+const ATTR_POSITION_LOC		= 0;
+const ATTR_NORMAL_NAME		= "a_norm";
+const ATTR_NORMAL_LOC		= 1;
+const ATTR_UV_NAME			= "a_uv";
+const ATTR_UV_LOC			= 2;
+
+
 
 //--------------------------------------------------
 // Util  Class 
@@ -29,11 +40,11 @@ class GlUtil{
 
 
 class webglCanvas {
-    constructor(w,h) {
+    constructor(w,h) {	
+
         this.width = w; // Default canvas width
         this.height = h; // Default canvas height
         this.gl = null; // WebGL2 context
-	
 		this.createCanvas()
 		this.initializeCanvas()
     }
@@ -44,7 +55,7 @@ class webglCanvas {
         canvas.height = this.height;
         this.gl = canvas.getContext("webgl2");
 		canvas.style.marginTop="10px"
-        document.getElementById("mainplate").appendChild(canvas);
+        document.getElementById("homeplate").appendChild(canvas);
 		
     }
 

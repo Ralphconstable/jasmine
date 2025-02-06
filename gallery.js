@@ -126,20 +126,16 @@ class Gallery {
     addIcon(imge,title,i){
         var icon =document.createElement("div")
         icon.id="object : "+i
-        icon.style.margin="1vh"
-        icon.className="w3-margin-bottom "/*grid-item*/
-        icon.style.float="left"
-        icon.style.width="10vh"
+        icon.className="w3-margin-bottom iconstyle"/*grid-item*/
         var img=document.createElement("img")
         img.src=imge
         img.setAttribute("alt","primatives")
-        img.style.width="9vh"
+        img.style.width="12vh"
         var h4=document.createElement("div")
         icon.appendChild(img)
         icon.appendChild(h4)
         h4.innerHTML=title
         icon.style.border="1px solid black"
-       icon.style.maxHeight="10vh"
        icon.addEventListener('click',addObject,false)
        return icon
     }

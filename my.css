@@ -9,6 +9,12 @@
   gap: 1vw; /* No space between cells */
 }
 
+.iconstyle {
+  margin:1vh;
+  float:left;
+  width:13vh;
+  max-height: 12vh;
+}
 
 /* Style for the cells */
 .grid-item {

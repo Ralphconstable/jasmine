@@ -1,10 +1,18 @@
 function main(){
+
 	_OBJECTARRAY=[]
 	lastPosition=new  Vector3(0,0,0)
+	screen.orientation.addEventListener("change", (event) => {
+  		const type = event.target.type;
+  		const angle = event.target.angle;
+		glCanvas.resize(window.innerWidth,window.innerWidth)
+		 onRender(30)
 
+	});
 	_Galleries=[]
-	_Galleries.push(new Gallery('Primatives').addIcons(_ModelsGallery).hide())
-
+	//_Galleries.push(new Gallery2('Primatives').addIcons(_ModelsGallery).hide())
+	_Galleries.push(new Gallery2('niggger'))
+_Galleries[0].show()
 	glCanvas= new webglCanvas(window.innerWidth,window.innerHeight)
 	gl=glCanvas.gl
 	gCamera = new Camera(gl);

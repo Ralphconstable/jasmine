@@ -166,3 +166,81 @@ class Gallery {
 
     }
 }
+
+class Gallery2{
+    constructor(id){
+        this.main=document.getElementById('id01').cloneNode(true)
+        this.main.id=id
+    }
+    createEl(el,cl){
+        var elm =document.createElement(el)
+        if(cl!=null)
+        elm.className=cl
+    }
+
+    createTab(buttonArray,buttonid){
+      this.main=this.createEl('div', "w3-bar w3-border-bottom")
+      for(var i=0;i<buttonArray.length;i++){
+        var button=this.createEl('button',  "tablink w3-bar-item w3-button")
+            button.setAttribute('onclick',"openCity(event,+"+buttonArray[i] +")")
+            button.innerHTML=buttonArray[i]
+            this.main.appendChild(button)
+            this.createPanel(buttonid[i])
+      }
+
+    }
+
+    createPanel(buttonid){
+        var panelDiv=this.createEl('div', "w3-container city")
+        var h1=this.createEl('h1', "w3-container city")
+        panelDiv.appendChild(h1)
+        h1.innerHTML=buttonid
+
+    }
+
+    createClose(){
+        var div=this.createEl('div', "w3-container w3-light-grey w3-padding")
+        var button =this.createEl("button","w3-button w3-right w3-white w3-border" )
+        button.setAttribute('onclick',  "document.getElementById('id01').style.display='none'")
+        button.innerHTML="Close"
+        return div
+    }
+
+    show(){
+        document.getElementById('id01').style.display='block'
+    }
+    hide(){
+        document.getElementById('id01').style.display='none'
+    }
+
+}
+
+
+//<div id="id01" class="w3-modal">
+//<div class="w3-modal-content w3-card-4 w3-animate-zoom">
+// <header class="w3-container w3-blue"> 
+ // <span onclick="document.getElementById('id01').style.display='none'" 
+ // class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+  //<h2>Header</h2>
+ //</header>
+
+ //<div class="w3-bar w3-border-bottom">
+  //<button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">London</button>
+  //<button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Paris')">Paris</button>
+ // <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+ //</div>
+
+ //<div id="London" class="w3-container city">
+     // <h1>London</h1>
+      //<p>London is the most populous city in the United Kingdom, with a metropolitan area of over 9 million inhabitants.</p>
+      //<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+     //</div>
+   
+   
+   
+     //<div class="w3-container w3-light-grey w3-padding">
+     // <button class="w3-button w3-right w3-white w3-border" 
+    //  onclick="document.getElementById('id01').style.display='none'">Close</button>
+    // </div>
+     
+

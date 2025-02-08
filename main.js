@@ -13,7 +13,6 @@ function main(){
 	//_Galleries.push(new Gallery2('Primatives').addIcons(_ModelsGallery).hide())
 	_Galleries.push(new Gallery2('niggger'))
 _Galleries[0].show()
-alert(6)
 	glCanvas= new webglCanvas(window.innerWidth,window.innerHeight)
 	gl=glCanvas.gl
 	gCamera = new Camera(gl);

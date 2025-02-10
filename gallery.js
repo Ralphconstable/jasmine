@@ -111,7 +111,7 @@ class Gallery2{
 
         this.createTab(['London','Paris','Tokyo'],['london','paris','france'])
 
-       this.div.appendChild(this.createClose())
+    //   this.div.appendChild(this.createClose())
         document.body.appendChild(this.main)
         document.getElementById("londonp").style.display = "block";
 
@@ -163,8 +163,8 @@ class Gallery2{
     createImage(div,gll,desc){
         var div1=this.createEl("div","gallery")
         div1.style.margin="3px"
-        div1.style.width="33%"
-        div1.style.height="33%"
+        div1.style.width="25%"
+        div1.style.height="25%"
         div1.style.float="left"
         div1.style.overflow='hidden'
         div.appendChild(div1)

@@ -91,57 +91,115 @@ class DND {
 
 }
 
-class Gallery {
-    constructor(name){
-        this.div=document.createElement("div")
-        this.div.className="w3-white w3-wide w3-padding w3-card"
-        var top=document.getElementById("topbar")
-        this.div.setAttribute("style","left:0px;top:85px;background:pink;display:block;position:absolute;width:40vw;height:90vh")
-       this.div.style.top=(top.clientHeight+5+"px")
-        this.name=name
-        this.holder=document.createElement("div")
-       // this.holder.className="quad"
-        this.holder.style.float="left"
-       // this.holder.style.display="grid"
-        this.holder.style.width="100%"
-        this.holder.style.height="100%"
-        this.div.appendChild(this.holder)
-        document.body.appendChild(this.div)
+
+class Gallery2{
+    constructor(id){
+        this.main=this.createEl("div","w3-modal")
+        this.main.style.maxHeight="80vh"
+        this.main.id=id
+        this.div= this.createEl("div","w3-modal-content w3-card-4 w3-animate-zoom")
+        this.main.appendChild(this.div)
+        var header=this.createEl("header","w3-container w3-blue")
+        this.div.appendChild(header)
+        var span=this.createEl("span","w3-button w3-blue w3-medium w3-display-topright" )
+        span.innerHTML="&times"
+        this.div.appendChild(span)
+        span.setAttribute("onclick","document.getElementById('"+id+"').style.display='none'" )
+        var h4=this.createEl("h4")
+        h4.innerHTML="Header"
+        header.appendChild(h4)
+
+        this.createTab(['London','Paris','Tokyo'],['london','paris','france'])
+
+       this.div.appendChild(this.createClose())
+        document.body.appendChild(this.main)
+        document.getElementById("londonp").style.display = "block";
+
+
+    }
+    createEl(el,cl){
+        var elm =document.createElement(el)
+        if(cl!=null)
+        elm.className=cl
+        return elm
     }
 
-    
-    addIcons(list){
-        var icn=null
-        for(var i=0;i<list.length;i++){
-            var im=list[i].icon
-            if(im==null){im="globeholder.jpg";}
-            icn= this.addIcon('resources/'+im,list[i].model,i)
-            this.holder.appendChild(icn)
-            icn.addEventListener("touchstart", this.mouseDown.bind(this),false)
-            icn.addEventListener("touchend", this.mouseUp.bind(this),false)
+    createTab(buttonArray,buttonid){
+      this.tabbar=this.createEl('div', "w3-bar w3-border-bottom")
+      this.div.appendChild(this.tabbar)
 
+      for(var i=0;i<buttonArray.length;i++){
+        var button=this.createEl('button',  "tablink w3-bar-item w3-button")
+            button.setAttribute('onclick',"openCity(event,+"+buttonArray[i] +")")
+            button.innerHTML=buttonArray[i]
+            button.id=buttonid[i]
+            button.addEventListener('click',this.openCity.bind(this),true)
+            this.tabbar.appendChild(button)
+            this.div.appendChild(this.createPanel(buttonArray[i],buttonid[i]))
+      }
+
+    }
+
+    createPanel(buttonArray,buttonid,gallry){
+        var panelDiv=this.createEl('div', "w3-container city")
+        panelDiv.style.width="100%"
+        panelDiv.id=buttonid+"p"
+        var h2=this.createEl('h2',null)
+        panelDiv.appendChild(h2)
+        h2.innerHTML=buttonArray
+        var div=this.createEl("div","responsive")
+        div.style.float="left"
+        div.style.width="100%"
+        for(var i=0;i<_ModelsGallery.length;i++){
+            
+            this.createImage(div,_ModelsGallery[i].icon,_ModelsGallery[i].model)
         }
+        panelDiv.appendChild(div)
+        panelDiv.style.display="none"
+        return panelDiv
+    }
+
+
+    createImage(div,gll,desc){
+        var div1=this.createEl("div","gallery")
+        div1.style.margin="3px"
+        div1.style.width="33%"
+        div1.style.height="33%"
+        div1.style.float="left"
+        div1.style.overflow='hidden'
+        div.appendChild(div1)
+        if(gll==null)gll='globeholder.jpg'
+        var a =this.createEl("a",null)
+        div1.appendChild(a)
+        a.setAttribute("target","_blank")
+        var img=document.createElement("img")
+        img.setAttribute("src","resources/"+gll)
+        a.appendChild(img)
+        var description=this.createEl('div',"desc")
+        description.innerHTML =desc
+
+        div1.appendChild(description)
         return this
     }
-    addIcon(imge,title,i){
-        var icon =document.createElement("div")
-        icon.id="object : "+i
-        icon.className="w3-margin-bottom iconstyle"/*grid-item*/
-        var img=document.createElement("img")
-        img.src=imge
-        img.setAttribute("alt","primatives")
-        img.style.width="12vh"
-        var h4=document.createElement("div")
-        icon.appendChild(img)
-        icon.appendChild(h4)
-        h4.innerHTML=title
-        icon.style.border="1px solid black"
-       icon.addEventListener('click',addObject,false)
-       return icon
+
+    createClose(){
+        var div=this.createEl('div', "w3-container w3-light-grey w3-padding")
+        var button =this.createEl("button","w3-button w3-right w3-white w3-border" )
+        button.setAttribute('onclick',  "document.getElementById('"+this.main.id+"').style.display='none'")
+        button.innerHTML="Close"
+        div.appendChild(button)
+        return div
     }
 
-
-
+    openCity() {
+        var i;
+        var x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        var c=event.target.id
+        document.getElementById(c+"p").style.display = "block";
+    }
     mouseDown(){
         this.startTime = Date.now();
         this.timeoutId = setTimeout(this.timer,500)
@@ -157,60 +215,10 @@ class Gallery {
     }
 
     show(){
-        this.div.style.display="block"
-        return this
+        document.getElementById(this.main.id).style.display='block'
     }
     hide(){
-        this.div.style.display="none"
-        return this
-
-    }
-}
-
-class Gallery2{
-    constructor(id){
-        this.main=document.getElementById('id01').cloneNode(true)
-        this.main.id=id
-    }
-    createEl(el,cl){
-        var elm =document.createElement(el)
-        if(cl!=null)
-        elm.className=cl
-    }
-
-    createTab(buttonArray,buttonid){
-      this.main=this.createEl('div', "w3-bar w3-border-bottom")
-      for(var i=0;i<buttonArray.length;i++){
-        var button=this.createEl('button',  "tablink w3-bar-item w3-button")
-            button.setAttribute('onclick',"openCity(event,+"+buttonArray[i] +")")
-            button.innerHTML=buttonArray[i]
-            this.main.appendChild(button)
-            this.createPanel(buttonid[i])
-      }
-
-    }
-
-    createPanel(buttonid){
-        var panelDiv=this.createEl('div', "w3-container city")
-        var h1=this.createEl('h1', "w3-container city")
-        panelDiv.appendChild(h1)
-        h1.innerHTML=buttonid
-
-    }
-
-    createClose(){
-        var div=this.createEl('div', "w3-container w3-light-grey w3-padding")
-        var button =this.createEl("button","w3-button w3-right w3-white w3-border" )
-        button.setAttribute('onclick',  "document.getElementById('id01').style.display='none'")
-        button.innerHTML="Close"
-        return div
-    }
-
-    show(){
-        document.getElementById('id01').style.display='block'
-    }
-    hide(){
-        document.getElementById('id01').style.display='none'
+        document.getElementById(this.main.id).style.display='none'
     }
 
 }

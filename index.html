@@ -35,27 +35,26 @@
 <body  id="home" onload="main()" style="touch-action: none;overflow: hidden">
 
 
-  <div id="id01" class="w3-modal" style="max-height: 80vh;">
+  <div id="gallerytemplate" class="w3-modal" style="max-height: 80vh;">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom">
      <header class="w3-container w3-blue"> 
-      <span onclick="document.getElementById('id01').style.display='none'" 
-      class="w3-button w3-blue w3-medium w3-display-topright">&times;</span>
+      <span onclick="document.getElementById('gallerytemplate').style.display='none'" 
+      class="w3-button w3-blue w3-medium w3-display-topright" 
+      >&times;</span>
       <h4>Header</h4>
      </header>
    
-     <div id="tabsection" class="w3-bar w3-border-bottom">
+     <div id="tabtemplate" class="w3-bar w3-border-bottom">
       <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">London</button>
      </div>
    
-     <div  id="London" class="w3-container city">
+     <div  id="paneltemplate" class="w3-container city">
       <h4>London</h4>
-      <p>London is the most populous city in the United Kingdom, with a metropolitan area of over 9 million inhabitants.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
      </div>
    
-     <div class="w3-container w3-light-grey w3-padding">
-      <button class="w3-button w3-right w3-white w3-border w3-small" 
-      onclick="document.getElementById('id01').style.display='none'">Close</button>
+     <div id="closearea" class="w3-container w3-light-grey w3-padding">
+      <button" class="w3-button w3-right w3-white w3-border w3-small">Close</button>
+
      </div>
     </div>
    </div>

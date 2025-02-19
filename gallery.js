@@ -1,22 +1,21 @@
 function models(){
-    window.scrollTo({
+    /*window.scrollTo({
         top: document.getElementById("home").offsetTop, // Scroll to the top of the element
         behavior: 'smooth' // Optional: Add smooth scrolling animation
-      });
+      });*/
     _Galleries[0].show()
 
 }
 function addObject(){
-    var target=event.target.tagName
-    if(target!="DIV")target=event.target.parentNode
+    var target=event.target
     var index=parseInt(target.id.split(":")[1])
-   var object=eval(_ModelsGallery[index].object)
-  object.setPosition(lastPosition.x,lastPosition.y,lastPosition.z)
-   lastPosition.x+=200/gl.canvas.width
-   lastPosition.y+=200/gl.canvas.width
-   lastPosition.z+=200/gl.canvas.width
-
-   _Galleries[0].hide()
+    var object=eval(_ModelsGallery[index].object)
+    object.setPosition(lastPosition.x,lastPosition.y,lastPosition.z)
+    lastPosition.x+=200/gl.canvas.width
+    lastPosition.y+=200/gl.canvas.width
+    lastPosition.z+=200/gl.canvas.width
+    _SceneGraph.addObject(null,object)
+    _Galleries[0].hide()
 }
 
 class DND {
@@ -95,7 +94,7 @@ class DND {
 class Gallery2{
     constructor(id){
         this.main=this.createEl("div","w3-modal")
-        this.main.style.maxHeight="80vh"
+        this.main.style.maxHeight="100vh"
         this.main.id=id
         this.div= this.createEl("div","w3-modal-content w3-card-4 w3-animate-zoom")
         this.main.appendChild(this.div)
@@ -152,7 +151,7 @@ class Gallery2{
         div.style.width="100%"
         for(var i=0;i<_ModelsGallery.length;i++){
             
-            this.createImage(div,_ModelsGallery[i].icon,_ModelsGallery[i].model)
+            this.createImage(div,_ModelsGallery[i].icon,_ModelsGallery[i].model,i)
         }
         panelDiv.appendChild(div)
         panelDiv.style.display="none"
@@ -160,13 +159,14 @@ class Gallery2{
     }
 
 
-    createImage(div,gll,desc){
+    createImage(div,gll,desc,i){
         var div1=this.createEl("div","gallery")
         div1.style.margin="3px"
-        div1.style.width="25%"
-        div1.style.height="25%"
-        div1.style.float="left"
-        div1.style.overflow='hidden'
+        div1.style.width="16.6%";
+        div1.style.height="16.6%";
+        div1.style.float="left";
+        div1.style.overflow="hidden";
+      
         div.appendChild(div1)
         if(gll==null)gll='globeholder.jpg'
         var a =this.createEl("a",null)
@@ -175,10 +175,11 @@ class Gallery2{
         var img=document.createElement("img")
         img.setAttribute("src","resources/"+gll)
         a.appendChild(img)
+        img.id='image:'+i
         var description=this.createEl('div',"desc")
         description.innerHTML =desc
-
         div1.appendChild(description)
+        div1.addEventListener("click",addObject,false)
         return this
     }
 
@@ -215,6 +216,11 @@ class Gallery2{
     }
 
     show(){
+        window.scrollTo({
+            top: document.getElementById("home").offsetTop, // Scroll to the top of the element
+            behavior: 'smooth' // Optional: Add smooth scrolling animation
+          });
+    
         document.getElementById(this.main.id).style.display='block'
     }
     hide(){
@@ -223,32 +229,4 @@ class Gallery2{
 
 }
 
-
-//<div id="id01" class="w3-modal">
-//<div class="w3-modal-content w3-card-4 w3-animate-zoom">
-// <header class="w3-container w3-blue"> 
- // <span onclick="document.getElementById('id01').style.display='none'" 
- // class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
-  //<h2>Header</h2>
- //</header>
-
- //<div class="w3-bar w3-border-bottom">
-  //<button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">London</button>
-  //<button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Paris')">Paris</button>
- // <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'Tokyo')">Tokyo</button>
- //</div>
-
- //<div id="London" class="w3-container city">
-     // <h1>London</h1>
-      //<p>London is the most populous city in the United Kingdom, with a metropolitan area of over 9 million inhabitants.</p>
-      //<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-     //</div>
-   
-   
-   
-     //<div class="w3-container w3-light-grey w3-padding">
-     // <button class="w3-button w3-right w3-white w3-border" 
-    //  onclick="document.getElementById('id01').style.display='none'">Close</button>
-    // </div>
-     
 

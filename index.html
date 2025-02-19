@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow: hidden;">
 <head>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -21,7 +21,8 @@
   <script src="gridFloor.js"></script>
   <script src="primatives.js"></script>
   <script src="buffers.js"></script>
-
+  <script src="scenegraph.js"></script>
+  <script src="shadergraph.js"></script>
 
 
 
@@ -33,41 +34,41 @@
 
 </script>
 <body  id="home" onload="main()" style="touch-action: none;overflow: hidden">
+<!-- shader graph box ) -->
+<div id="shaderbox" style="float:right;margin:10px;background:black;padding:5px;position:absolute;width:98%;height:100vh;z-index: 5000;display:none">
+  <div class="x" style="text-align: center;" onclick="document.getElementById('shaderbox').style.display='none'">X</div>
+</div>
 
+  <!-- scene graph box ) -->
 
-  <div id="gallerytemplate" class="w3-modal" style="max-height: 80vh;">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-     <header class="w3-container w3-blue"> 
-      <span onclick="document.getElementById('gallerytemplate').style.display='none'" 
-      class="w3-button w3-blue w3-medium w3-display-topright" 
-      >&times;</span>
-      <h4>Header</h4>
-     </header>
-   
-     <div id="tabtemplate" class="w3-bar w3-border-bottom">
-      <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'London')">London</button>
-     </div>
-   
-     <div  id="paneltemplate" class="w3-container city">
-      <h4>London</h4>
-     </div>
-   
-     <div id="closearea" class="w3-container w3-light-grey w3-padding">
-      <button" class="w3-button w3-right w3-white w3-border w3-small">Close</button>
+<div id="scenebox" class="w3-modal" style="display:none;">
+  <div class="w3-modal-content w3-card-4" style="width:50%">
+      <header id="modalheader" class="w3-container w3-teal"> 
+        <span onclick="_SceneGraph.hide()" 
+    class="w3-button w3-display-topright">&times;</span>
 
-     </div>
-    </div>
-   </div>
-     
+        <textarea id="scenetitle" oninput="_SceneGraph.updateName()" style="margin:10px" class="edittext">Modal Header</textarea>
+      </header>
+      <div  class="w3-container">
+            <div id="scenetree" style="width:100%;height:400px;overflow:scroll">
+                <ul id="myUL"></ul>
+            </div>
+      </div>
+  </div>
+</div>
+
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top" id="topbar">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" id="hom" class="w3-bar-item w3-button w3-hide-small"><b>Jasmine</b> </a>
+    <a href="#home" id="home" class="w3-bar-item w3-button w3-hide-small"><b>Jasmine</b> </a>
+    <a id="addscene" onclick="newScene()" class="w3-bar-item w3-button " style="margin-left:20px"><i class='fa fa-plus w3-blue w3-large'></i></a>
+   
+    <a id="sceneadd" class="w3-bar-item w3-button" style="text-align:center"  onclick="_OBJECTARRAY[0].show()"><div class="w3-large" id="scenename">Test Scene</div></a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
       <a href="#projects" class="w3-bar-item w3-button ">Projects</a>
-      <a href="#models"  class="w3-bar-item w3-button ">Models</a>
+      <a href="#models" onclick="_Galleries[0].show()" class="w3-bar-item w3-button ">Models</a>
       <a href="#animation" class="w3-bar-item w3-button ">Animation</a>
     </div>
   </div>
@@ -96,24 +97,6 @@
       </div>
     </div>
 
-
-  <!-- models Section -->
-  <div class="w3-container w3-padding-32" id="models">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Models</h3>
-    <p>Select various models by type : Primative, Procedural, From Files,  From User</p>
-  </div>
-
-  <div class="w3-grayscale quad" >
-    <div class="w3-margin-bottom grid-item">
-      <img src="resources/primatives.jpg" onclick="models()" alt="primatives" style="width:100%;">
-      <h4>Primatives</h4>
-    </div>
-    <div class="w3-margin-bottom grid-item">
-      <img src="resources/primatives.jpg" alt="primatives" style="width:100%">
-      <h4>Primatives</h4>
-    </div>
-
-  </div>
 
   <!-- Animation Section -->
   <div class="w3-container w3-padding-32" id="animation">

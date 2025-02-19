@@ -11,11 +11,12 @@ function main(){
 	});
 	_Galleries=[]
 	//_Galleries.push(new Gallery2('Primatives').addIcons(_ModelsGallery).hide())
-	_Galleries.push(new Gallery2('niggger'))
-_Galleries[0].show()
+	_Galleries.push(new Gallery2('models'))
 	glCanvas= new webglCanvas(window.innerWidth,window.innerHeight)
 	gl=glCanvas.gl
 	gCamera = new Camera(gl);
+	_SceneGraph=new SceneGraph().show()
+	_ShaderBox=new ShaderBox()
 
 	gCamera.transform.position.set(0,1,3);
     gCameraCtrl = new KBMCtrl()

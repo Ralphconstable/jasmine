@@ -111,6 +111,8 @@ class webglCanvas {
     resize(width, height) {
         this.width = width;
         this.height = height;
+		document.getElementById("homeplate").width=width+"px"
+		document.getElementById("homeplate").height=height+"px"
 
         if (this.gl) {
             this.gl.canvas.width = width;

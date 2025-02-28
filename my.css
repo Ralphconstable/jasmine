@@ -9,6 +9,18 @@
   gap: 1vw; /* No space between cells */
 }
 
+.double {
+  display: grid;
+  grid-template-rows: auto; /* Two columns per row */
+  grid-template-columns:  45% 55%; /* Two columns per row */
+  font-size: 2.5vh;
+  background-color: white;
+  justify-items: left; 
+  align-items: left; 
+  gap: 0vw; /* No space between cells */
+}
+
+
 .iconstyle {
   margin:1vh;
   float:left;

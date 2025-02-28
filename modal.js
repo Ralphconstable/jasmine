@@ -1,4 +1,5 @@
 
+
 class _3DObject {
 	constructor(name){
 		this.setName(name)	
@@ -162,11 +163,13 @@ class Modal2 extends _3DObject{
 			this.shader.activate()
 			this.shader.setCameraMatrix(gCamera.viewMatrix)
 			this.shader.setViewPosition(gCamera.transform.position)
+
        	/*	this.shader.prepareUniforms(this,0)
 			var loc = gl.getUniformLocation(this.shader.program,'objid');
 			gl.uniform3f(loc, this.uid[0],this.uid[1],this.uid[2]);
 */
         	this.shader.render(this.preRender(),0);
+
 
 		if(MRT){
 			this.drawToQuad()	
@@ -239,6 +242,8 @@ class SectionModal extends Modal2{
 
 
 }
+
+
 class Caster extends Modal2{
 	constructor(name){	
 		super(name,Primatives.Cube.createMesh(gl,1,1,1,0,0,0))
@@ -254,6 +259,42 @@ class Caster extends Modal2{
 		this.sections[0].uniforms.push({"caption":"Light Pos","name":"lightPos","type":"FLOAT_VEC3","value":[1.2,1.0,2.0],"editor":"edit","textureid":-1,"unit":-1,"pic":"","section":0});
 		this.addPropBox()
 	}
+}
+
+function outline(obj){
+	gl.enable(gl.STENCIL_TEST);
+	gl.clear(gl.STENCIL_BUFFER_BIT);
+	gl.stencilFunc(
+		gl.ALWAYS,    // the test
+		1,            // reference value
+		0xFF,         // mask
+	 );
+	 gl.stencilOp(
+		gl.KEEP,     // what to do if the stencil test fails
+		gl.KEEP,     // what to do if the depth test fails
+		gl.REPLACE,  // what to do if both tests pass
+	 );
+
+	obj.render(false)
+	oShader.activate()
+	oShader.setCameraMatrix(gCamera.viewMatrix)
+	oShader.setViewPosition(gCamera.transform.position)
+
+	obj.setScale(1.08,1.08,1.08)
+	gl.stencilFunc(
+		gl.EQUAL,     // the test
+		0,            // reference value
+		0xFF,         // mask
+	 );
+	 gl.stencilOp(
+		gl.KEEP,     // what to do if the stencil test fails
+		gl.KEEP,     // what to do if the depth test fails
+		gl.KEEP,     // what to do if both tests pass
+	 );
+	 oShader.render(obj.preRender(),0);
+	 obj.setScale(1.,1.,1)
+
+
 }
 
 

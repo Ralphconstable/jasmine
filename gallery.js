@@ -9,12 +9,15 @@ function models(){
 function addObject(){
     var target=event.target
     var index=parseInt(target.id.split(":")[1])
+
     var object=eval(_ModelsGallery[index].object)
     object.setPosition(lastPosition.x,lastPosition.y,lastPosition.z)
     lastPosition.x+=200/gl.canvas.width
     lastPosition.y+=200/gl.canvas.width
     lastPosition.z+=200/gl.canvas.width
     _SceneGraph.addObject(null,object)
+
+    object.addPropBox()
     _Galleries[0].hide()
 }
 

@@ -34,11 +34,14 @@ class SceneGraph extends _3DObject
 	
 	addObject(parent,model){
 		model.parent=null
+
 		if(parent!=null)
 			model.parent=parent
 		var li=document.createElement("li")
 			this.tree.appendChild(li)
+			li.setAttribute('data-index',model.id)
 			li.innerHTML=model.name
+			model.li=li
            // li.addEventListener("click",this.outlineSelectedNodes.bind(this))
 	}
 
@@ -147,6 +150,7 @@ class SceneGraph extends _3DObject
 		}
 
 	var obj=	this.getCSSAbsolutePosition(node.parentNode)
+	    _SelectStart=node.parentNode.getAttribute("data-index")
 		return nodes;
 	}
 

@@ -53,7 +53,7 @@ class webglCanvas {
         const canvas = document.createElement("canvas");
         canvas.width = this.width;
         canvas.height = this.height;
-        this.gl = canvas.getContext("webgl2");
+        this.gl = canvas.getContext("webgl2",{stencil:true});
 		canvas.style.marginTop="10px"
         document.getElementById("homeplate").appendChild(canvas);
 		
@@ -104,8 +104,8 @@ class webglCanvas {
             console.error("WebGL context is not created. Call createCanvas() first.");
             return;
         }
+		this.gl.clear(this.gl.COLOR_BUFFER_BIT);
 
-        this.gl.clear(this.gl.COLOR_BUFFER_BIT);
     }
 
     resize(width, height) {

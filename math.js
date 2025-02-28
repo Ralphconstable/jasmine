@@ -120,11 +120,12 @@ class Vector3{
 
 	set(x,y,z){this.x = x; this.y = y; this.z = z;	return this; }
 
-	multiScalar(v){ this.x *= v; this.y *= v; this.z *= v; return this; }
+	multiScalar(v){ this.x *= v; this.y *= v; this.z *= v;return this; }
 
 	getArray(){ return [this.x,this.y,this.z]; }
 	getFloatArray(){ return new Float32Array([this.x,this.y,this.z]);}
 	clone(){ return new Vector3(this.x,this.y,this.z); }
+	add(x){this.x+=x.x;this.y+=x.y;this.z+=x.z;return this}
 }
 
 

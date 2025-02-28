@@ -61,15 +61,14 @@ class Shader{
 	}
 
 	render(modal,i){
+
 		this.setModalMatrix(modal.transform.getViewMatrix());	
 		//Set the transform, so the shader knows where the modal exists in 3d space
 		this.gl.bindVertexArray(modal.mesh.vao);
-
 		if(modal.mesh.noCulling) this.gl.disable(this.gl.CULL_FACE);
 		if(modal.mesh.doBlending) this.gl.enable(this.gl.BLEND);
 		if(modal.mesh.indexCount) this.gl.drawElements(modal.mesh.drawMode, modal.mesh.indexCount, gl.UNSIGNED_SHORT, 0); 
-		else this.gl.drawArrays(modal.mesh.drawMode, 0, modal.mesh.vertexCount);
-
+		else this.gl.drawArrays(modal.mesh.drawMode, 0,modal.mesh.vertexCount);
 		//Cleanup
 		this.gl.bindVertexArray(null);
 		if(modal.mesh.noCulling) this.gl.enable(this.gl.CULL_FACE);
@@ -117,7 +116,6 @@ class ShaderUtil{
 		var shader = gl.createShader(type);
 		gl.shaderSource(shader,src);
 		gl.compileShader(shader);
-
 		//Get Error data if shader failed compiling
 		if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS)){
 			console.error("Error compiling shader : " + src, gl.getShaderInfoLog(shader));
@@ -343,7 +341,17 @@ class ShaderUtil{
 		gl.useProgram(null); //Done setting up shader
 		return shader
 	}
+	static makeShaderFromdict(name){
+		var result = _ShaderDictionary.find(({ model }) => model === name);	
+		var vs =ShaderUtil.domShaderSrc("vertex_shader")
+		//var p = ShaderUtil.createProgram(gl,vShader,fShader,true);
+		var shader = new Shader(gl,vs,result.main);
 
+		shader.setPerspective(gCamera.projectionMatrix)
+		shader.mainTexture = -1; //Store Our Texture ID
+		gl.useProgram(null); //Done setting up shader
+		return shader
+	}
 
 }
 

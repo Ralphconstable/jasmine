@@ -1,5 +1,19 @@
 var Primatives = {};
 
+Primatives.Line = class {
+	static createModal(gl,ls,le){ return new Modal2(Primatives.Line.createMesh(gl,ls,le)); }
+	static createMesh(gl,ls,le){
+		var aVert = [ ls.x,ls.y,ls.z,le.x,le.y,le.z]
+		var mesh = fCreateMeshVAO("Line",null,aVert,null,null ,3);
+		mesh.drawMode=gl.LINES
+		mesh.vertexCount=2
+
+
+		mesh.noCulling = true;
+		mesh.doBlending = true;
+		return mesh;
+	}
+}
 
 Primatives.Cube = class {
 	static createModal(gl){ return new Modal2(Primatives.Cube.createMesh(gl,1,1,1,0,0,0)); }
@@ -79,5 +93,4 @@ Primatives.Quad = class {
 		return mesh;
 	}
 }
-
 

@@ -30,7 +30,7 @@ class Transform{
 		Matrix4.transformVec4(this.forward,	[0,0,1,0],this.matView.raw); //Z
 		Matrix4.transformVec4(this.up,		[0,1,0,0],this.matView.raw); //Y
 		Matrix4.transformVec4(this.right,	[1,0,0,0],this.matView.raw); //X
-
+		
 		return this.matView.raw;
 	}
 

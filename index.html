@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="my.css">
 
 </head>
@@ -23,6 +24,10 @@
   <script src="buffers.js"></script>
   <script src="scenegraph.js"></script>
   <script src="shadergraph.js"></script>
+  <script src="raytrace.js"></script>
+  <script src="properties.js"></script>
+
+
 
 
 
@@ -61,8 +66,9 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top" id="topbar">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a id="addscene" onclick="toggleProperties()" class="w3-bar-item w3-button " style="margin-left:20px"><i class='fa fa-gear  w3-large'></i></a>
+
     <a href="#home" id="home" class="w3-bar-item w3-button w3-hide-small"><b>Jasmine</b> </a>
-    <a id="addscene" onclick="newScene()" class="w3-bar-item w3-button " style="margin-left:20px"><i class='fa fa-plus w3-blue w3-large'></i></a>
    
     <a id="sceneadd" class="w3-bar-item w3-button" style="text-align:center"  onclick="_OBJECTARRAY[0].show()"><div class="w3-large" id="scenename">Test Scene</div></a>
     <!-- Float links to the right. Hide them on small screens -->
@@ -77,8 +83,20 @@
 <!-- main can as-->
 
 <div id="homeplate" style="border:1px solid black;margin-top:0px;width:100vw;height:100vh">
-
-</div>
+	<!-- editors blocks -->
+	<div id="editorblock" style="display:none">
+		<div id="edit"><input type="text" style="width:90%;text-align:center" ></div>
+		<div id="boolean" style="text-align:ceter" ><input type="checkbox" style="margin:0 auto"></div>
+    <div id="checkbox" style="text-align:ceter" ><input type="checkbox" style="margin:0 auto"></div>
+    <div id="color" style="border:1px solid black;text-align:center "><input type="color" style="margin:0 auto" ></div>
+		<div id="number" style="border:1px solid black;" ><input type="number" style="width:100%;text-align: center" ></div>
+		<div id="radio"><input type="radio" ></div>
+		<div id="range"><input type="range" ></div>
+		<div id="url"><input type="url" ></div>
+		<div id="select"><select  name="sel " id="sel" ></select/div>
+    <div id="sampler2d"><image src='Resources/UV_Grid_Lrg.jpg' width="30" height="30" style="float:right;margin-right:2px"></image></div>
+		<div id="tripplepos"><input type="text" style="border:1px solid black;width:100%;text-align:center" placeholder="( x,X,X )" data-slots="X" data-accept="\d"></div>
+	</div>
 <!-- Page content -->
 <div class="w3-content w3-padding" style="max-width:1564px">
 
@@ -149,6 +167,15 @@
       
     finalColor =vec4(1.,0.0,0.8,1.);
   }
+</script>
+  <script id="fragment_outline" type="x-shader/x-fragment">#version 300 es
+    precision mediump float;
+    
+    out vec4 finalColor;
+    void main(void){	
+        
+      finalColor =vec4(0.4,0.4,0.8,1.);
+    }
   
 
 </script>
